@@ -8,6 +8,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     unzip \
     jq \
     ca-certificates \
+    iputils-ping \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # Install Terraform (version 1.14.0 or later)

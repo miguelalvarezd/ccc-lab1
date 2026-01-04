@@ -1,0 +1,8 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Create S3 bucket for Terraform state
+
+Resources:
+  TerraformStateBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'tf-state-${AWS::AccountId}-${AWS::Region}'

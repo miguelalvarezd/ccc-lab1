@@ -17,6 +17,7 @@
         "hashicorp.terraform",
         "ms-azuretools.vscode-docker",
         "amazonwebservices.aws-toolkit-vscode"
+        "wayou.vscode-todo-highlight"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
