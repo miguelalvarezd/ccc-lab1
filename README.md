@@ -448,6 +448,31 @@ Now you will replicate the infrastructure you created manually in Part 1 using T
 
    It is now your turn to add all the infrastructure manually created in Part 1. You should rely on this documentation [Terraform AWS Provider Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) to configure all the needed resources.
 
+5. **Handling VPC Peering in Terraform**
+
+   When recreating the VPC peering connection in Terraform, you'll face a chicken-and-egg problem: you need your partner's AWS account ID, VPC ID, and CIDR block, but they might not have deployed their infrastructure yet.
+
+   The solution is to make the peering resources **conditional** using Terraform's `count` meta-argument. By setting variables to `null` by default, you can deploy your core infrastructure first, then add the peering configuration later:
+
+   ```hcl
+   variable "peer_vpc_id" {
+     type    = string
+     default = null
+   }
+
+   resource "aws_vpc_peering_connection" "peer" {
+     count       = var.peer_vpc_id != null ? 1 : 0
+     vpc_id      = aws_vpc.main.id
+     peer_vpc_id = var.peer_vpc_id
+     # ...
+   }
+   ```
+
+   This pattern allows you to:
+   1. Deploy your VPC, subnet, EC2, and other resources without peering (`terraform apply`)
+   2. Coordinate with your partner team to exchange VPC details
+   3. Update `terraform.tfvars` with the peer values and run `terraform apply` again to create the peering connection
+
 ## Extra Credit
 
 ### 1. Connect to Your EC2 Instance Through SSH
