@@ -541,9 +541,15 @@ You will need to create one lab report per team. At the bare minimum, it should 
 4. Screenshot of connectivity with your partner team through private IP
 5. Screenshot of CloudWatch alarm configuration
 6. Link to your GitHub repository with Terraform code
-7. Explain key concepts learned during the lab.
-8. Explain problems you ran into and how you were able to solve them.
-9. Answer to the following questions:
+7. Screenshot showing successful SSH connection to your EC2 instance
+8. Screenshots demonstrating your Load Balancer and Auto Scaling setup:
+   - Load Balancer DNS name accessible in browser
+   - Evidence of traffic reaching 2 different EC2 instances (different instance IDs)
+   - Observation of what happens when you terminate one of the EC2 instances
+9. (Optional) If you completed the extra credit: Screenshot of your Python web app running with FastAPI
+10. Explain key concepts learned during the lab.
+11. Explain problems you ran into and how you were able to solve them.
+12. Answer to the following questions:
    - What is the purpose of an Internet Gateway in a VPC, and why is it required for your EC2 instance to be reachable from the internet?
    - Why did we need to add routes to the route tables after creating the VPC peering connection? What would happen if we skipped this step?
    - Explain the difference between a public and private subnet. Why might you place an EC2 instance in a private subnet in a production environment?
