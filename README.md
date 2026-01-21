@@ -501,15 +501,15 @@ You should do this step using the console. You will need to:
    **Why private and public subnets now, but not in Part 1?** In Part 1, we had a single EC2 instance that needed to be directly accessible from the internet, so we placed it in a public subnet with a public IP. With a load balancer architecture, the pattern changes: the ALB sits in public subnets to receive internet traffic, while EC2 instances stay in private subnets without public IPs. This is more secure because the instances are not directly exposed to the internet—all traffic must go through the load balancer. The NAT Gateway allows instances in private subnets to reach the internet for updates and patches, without being reachable from the internet.
 2. Modify the VPCs default security group to allow all inbound traffic from anywhere. (THIS IS A HORRIBLE SECURITY PRACTICE; WE ARE DOING IT FOR PRACTICALITY IN THE LAB)
 3. Create a Launch Template. Make sure to check the `Auto Scaling guidance`option. Your launch template should
-   a. Use the same AMI, architecture, instance type and key as the one in part 1
-   b. Do not add network configuration.
-   c. Use the IAM instance profile called `LabInstanceProfile`
-   d. In the User data, add the contents of `bootstrap-nginx.sh`
+   - Use the same AMI, architecture, instance type and key as the one in part 1
+   - Do not add network configuration.
+   - Use the IAM instance profile called `LabInstanceProfile`
+   - In the User data, add the contents of `bootstrap-nginx.sh`
 4. Create an autoscaling group using:
-   a. The VPC you just created and both of the private subnets.
-   b. Since we haven't created a new load balancer yet, select the option `Attach to a new load balancer`. Configure an internet facing, load balancer using the 2 public subnets, port 80, and the option to create a new target group.
-   c. Select a desired capacity of 2, minimum of 2 and maximum of 4 and add a target tracking policy to target a CPU utilization of 10%.
-   d. Leave everything else as default and create the autoscaling group.
+   - The VPC you just created and both of the private subnets.
+   - Since we haven't created a new load balancer yet, select the option `Attach to a new load balancer`. Configure an internet facing, load balancer using the 2 public subnets, port 80, and the option to create a new target group.
+   - Select a desired capacity of 2, minimum of 2 and maximum of 4 and add a target tracking policy to target a CPU utilization of 10%.
+   - Leave everything else as default and create the autoscaling group.
 
 You should have created a load balancer. Once it is provisioned:
 5. Show that you can properly access it and that you reach 2 distinct EC2 instances with different IDs.
