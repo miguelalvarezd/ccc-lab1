@@ -22,15 +22,18 @@ This lab introduces you to fundamental AWS concepts and infrastructure-as-code p
 Before starting this lab, ensure you have the following installed and configured:
 
 - **AWS Academy Learner Lab access**: Accept the invitation to AWS Academy and read `Academy Learner Lab Student Guide` (pages 3-7) and watch the video `Demo - How to Access Learner Lab`
-- **WSL (Windows only)**: If you're on Windows, install Windows Subsystem for Linux (WSL) and use a Linux distribution (Ubuntu recommended)
 - **Git**: Install Git and configure it with your name and email
 - **GitHub Account**: Set up SSH authentication to be able to clone and push changes
-- **Docker Desktop**: Install Docker Desktop for container support
 - **Terraform**: Install Terraform (version 1.14 or later)
 - **Visual Studio Code**: Install VS Code with recommended extensions:
   - Git Graph
   - Dev Containers
   - Python
+
+If you want to use dev containers or work on a Linux machine, you should also install:
+
+- **Docker Desktop**: Install Docker Desktop for container support
+- **WSL (Windows only)**: If you're on Windows, install Windows Subsystem for Linux (WSL) and use a Linux distribution (Ubuntu recommended)
 
 ## 3. Introduction
 
